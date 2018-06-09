@@ -22,7 +22,7 @@ public class Login_1 {
     public void before() throws Exception {
         System.out.println("\n@Before: - Login (aborted registration)");
 
-        driv = new InitializeDriver("11.3");
+        driv = new InitializeDriver();
         driv.startFlow();
         driver = driv.driver;
 

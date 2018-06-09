@@ -15,14 +15,14 @@ public class InitializeDriver {
 
     public IOSDriver<IOSElement> driver;
 
-    public InitializeDriver(String version) {
+    public InitializeDriver() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.7.2");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "A.Makarov");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, version);
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.2.5");
         capabilities.setCapability(MobileCapabilityType.UDID, Constants.UDID);
         capabilities.setCapability(MobileCapabilityType.APP, Constants.APP);
         capabilities.setCapability("bundleId", Constants.BundledID);

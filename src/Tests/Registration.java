@@ -22,9 +22,12 @@ public class Registration {
     public void before() throws Exception {
         System.out.println("\n@Before: - Registration");
 
-        driv = new InitializeDriver("11.3");
+        driv = new InitializeDriver();
         driv.startFlow();
         driver = driv.driver;
+
+        assertTrue(Element.Click(driver, "HelpStart"));
+        assertTrue(Element.Click(driver, "SignUpButton"));
     }
 
     @Test
@@ -137,7 +140,7 @@ public class Registration {
 
         // CASE 10:
         // Success registration
-        Element.SetText(driver, "EmailField", "test@0078.ru");
+        Element.SetText(driver, "EmailField", "test@0079.ru");
         Element.SetText(driver, "PasswordField", "password");
         Element.SetText(driver, "ConfirmPasswordField", "password");
         assertTrue(Element.Click(driver, "GoButton"));
