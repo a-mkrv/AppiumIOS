@@ -176,24 +176,69 @@ public class Profile {
         assertTrue(Element.Click(driver, "Weight"));
         System.out.println("PASSED: Case (C42220) - Weight in edit mode (not entered)");
 
-        // CASE 11 (C42221)
-        // Block Advanced (boy)
-        if (Element.GetText(driver, "Castrated") == "Не кастрирован") {
-            System.out.println("PASSED: Case (C42221) - Block Advanced (boy). By default not castrated");
+//        // CASE 11 (C42221)
+//        // Block Advanced (boy)
+//        if (Element.GetText(driver, "Castrated") == "Не кастрирован") {
+//            System.out.println("PASSED: Case (C42221) - Block Advanced (boy). By default not castrated");
+//        } else {
+//            System.out.println("FAIL: Case (C42221) - Block Advanced (boy). By default castrated");
+//        }
+//
+//        // CASE 12 (C42222)
+//        // Block Advanced (girl)
+//        Element.Click(driver, "Gender");
+//        if (!Element.IsActive(driver, "Sterilized")) {
+//            System.out.println("PASSED: Case (C42222) - Block Advanced (girl). By default not sterilized");
+//        } else {
+//            System.out.println("FAIL: Case (C42222) - Block Advanced (girl). By default sterilized");
+//        }
+
+        // CASE 13 (C42223)
+        // Selecting a position in the Additional section
+
+
+        // CASE 14 (C42352)
+        // Block Diseases in profile view mode. No diseases
+        Element.SetText(driver, "dogName", "Lord");
+        assertTrue(Element.Click(driver, "editMode"));
+        Element.touchWithoutFinding(driver, 45, 300);
+        Element.Click(driver, "Diseases");
+        if (Element.isPresent(driver, "dogName")) {
+            System.out.println("PASSED: Case (C42352) - Block Diseases in profile view mode. No diseases");
         } else {
-            System.out.println("FAIL: Case (C42221) - Block Advanced (boy). By default castrated");
+            System.out.println("FAIL: Case (C42352) - Block Diseases in profile view mode. No diseases");
         }
 
-        // CASE 12 (C42222)
-        // Block Advanced (girl)
-        Element.Click(driver, "Gender");
-        if (!Element.IsActive(driver, "Sterilized")) {
-            System.out.println("PASSED: Case (C42222) - Block Advanced (girl). By default not sterilized");
+        // CASE 15 (C42943)
+        // Block Diseases in profile view mode. With diseases
+        assertTrue(Element.Click(driver, "editMode"));
+        Element.Click(driver, "Diseases");
+        // Select random disease
+        Element.touchWithoutFinding(driver, 45, 300);
+        assertTrue(Element.Click(driver, "addButton"));
+        assertTrue(Element.Click(driver, "editMode"));
+        Element.touchWithoutFinding(driver, 45, 300);
+        assertTrue(Element.Click(driver, "Diseases"));
+
+        if (Element.isPresent(driver, "dogName")) {
+            System.out.println("FAIL: Case (C42943) - Block Diseases in profile view mode. With diseases");
         } else {
-            System.out.println("FAIL: Case (C42222) - Block Advanced (girl). By default sterilized");
+            System.out.println("PASSED: Case (C42943) - Block Diseases in profile view mode. With diseases");
         }
 
-        // 13 - 16
+        // CASE 16 (C47355)
+        // Finding a breed
+        assertTrue(Element.Click(driver, "cancelButton"));
+        assertTrue(Element.Click(driver, "editMode"));
+        assertTrue(Element.Click(driver, "BreedButton"));
+        Element.SetText(driver, "SearchBar", "TestBreed");
+        Element.touchWithoutFinding(driver, 119, 145);
+
+        if (Element.isPresent(driver, "dogName")) {
+            System.out.println("FAIL: Case (C47355) - Finding a breed");
+        } else {
+            System.out.println("PASSED: Case (C47355) - Finding a breed");
+        }
 
         // CASE 17 (C47356, C47357)
         // Entering the digits in the Name field
@@ -233,6 +278,16 @@ public class Profile {
         } else {
             System.out.println("PASSED: Case (C47359) - Dates differ after opening the calendar");
         }
+
+        // CASE 20 (C42090)
+        // Pet avatar in profile editing mode
+        assertTrue(Element.Click(driver, "dogAvatar"));
+        driver.findElementByName("Выбрать").click();
+        driver.findElementByName("Разрешить").click();
+        driver.findElementByName("Разрешить").click();
+        Element.touchWithoutFinding(driver, 20, 140);
+        Element.touchWithoutFinding(driver, 5, 140);
+        driver.findElementByName("Выбрать").click();
     }
 
     @After
