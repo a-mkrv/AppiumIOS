@@ -16,7 +16,7 @@ But I do not exclude that some steps may be superfluous, maybe I myself installe
 ```sh
 $ brew install node
 $ npm install -g appium@1.7.2
-$ npm i npm @ latest -g
+$ npm install npm@latest -g
 $ brew install ideviceinstaller
 $ brew install carthage
 $ npm install -g ios-deploy
